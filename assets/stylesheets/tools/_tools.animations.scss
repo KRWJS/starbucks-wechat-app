@@ -1,0 +1,59 @@
+//---------------------------------------------------------
+//  #Animations
+//---------------------------------------------------------
+
+.bounce {
+  @include animation(bounce 2s infinite);
+  display: block;
+}
+
+.pulse {
+  @include animation(pulse 2s infinite);
+  display: block;
+}
+
+.animate-drop-in {
+  opacity: 0;
+  @include transform(translateY(-30px));
+  @include transition(0.4s transform, 0.4s opacity);
+
+  .section-loaded & {
+    opacity: 1;
+    @include transform(translateY(0));
+  }
+}
+
+.animate-drop-in--slide {
+  opacity: 0;
+  @include transform(translateY(-30px));
+  @include transition(0.4s transform, 0.4s opacity);
+
+  .slide-loaded & {
+    opacity: 1;
+    @include transform(translateY(0));
+  }
+}
+
+@include keyframes(bounce) {
+  0%, 20%, 50%, 80%, 100% {
+    @include transform(translateY(0));
+  }
+  40% {
+    @include transform(translateY(-10px));
+  }
+  60% {
+    @include transform(translateY(-5px));
+  }
+}
+
+@include keyframes(pulse) {
+  0% {
+    @include transform(scale(1.1));
+  }
+  50% {
+    @include transform(scale(0.8));
+  }
+  100% {
+    @include transform(scale(1));
+  }
+}

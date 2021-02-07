@@ -1,0 +1,51 @@
+//---------------------------------------------------------
+//  #Responsive
+//---------------------------------------------------------
+
+.l-desktop {
+    @include media-query(tablet-landscape) {
+        display: none;
+    }
+}
+
+.l-tablet-landscape {
+    @media screen and (min-width: 1024px) {
+      display: none;
+    }
+}
+
+.l-tablet {
+    @media screen and (min-width: 771px) {
+      display: none;
+    }
+}
+
+.l-tablet-none {
+    @include media-query(tablet) {
+        display: none !important;
+    }
+}
+
+.l-phablet {
+  @media screen and (min-width: 551px) {
+    display: none;
+  }
+}
+
+.l-phablet-none {
+  @include media-query(phablet) {
+    display: none;
+  }
+}
+
+.l-phone {
+    @media screen and (min-width: 401px) {
+      display: none;
+    }
+}
+
+.l-phone-none {
+    @include media-query(phone) {
+        display: none;
+    }
+}

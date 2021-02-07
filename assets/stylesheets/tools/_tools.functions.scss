@@ -1,0 +1,51 @@
+//---------------------------------------------------------
+//  #Functions
+//---------------------------------------------------------
+
+
+//---------------------------------------------------------
+//  Responsive width output
+//---------------------------------------------------------
+
+// Loop over our breakpoints defined in _settings.responsive.scss
+@each $breakpoint in $breakpoints {
+
+	  // Get the name of the breakpoint.
+	  $alias: nth($breakpoint, 1);
+
+	  @include media-query($alias) {
+
+	}
+
+}
+
+
+//---------------------------------------------------------
+//  Loop maps
+//---------------------------------------------------------
+
+// loop colors.settings
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+ 
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
+
+//---------------------------------------------------------
+//  Image URL
+//---------------------------------------------------------
+
+@function image-url($path) {
+  @return $images-base-path + $path;
+}
+
+//---------------------------------------------------------
+//  Font URL
+//---------------------------------------------------------
+
+@function font-url($path) {
+  @return $fonts-base-path + $path;
+}

@@ -1,0 +1,43 @@
+// Tools
+//---------------------------------------------------------
+// Base settings, functions, mixins and animations
+@import "settings/settings.project";
+@import "tools/tools.mixins";
+@import "tools/tools.functions";
+@import "tools/tools.animations";
+
+// Vendor
+//---------------------------------------------------------
+// Third party plugins
+@import "vendor/jquery.fullPage";
+
+// Layout
+//---------------------------------------------------------
+// Lay-out abstractions and helpers that handle
+// aspects like width, position, spacings etc.
+@import "layout/layout.reset";
+@import "layout/layout.position";
+@import "layout/layout.grid";
+@import "layout/layout.spacing";
+@import "layout/layout.container";
+@import "layout/layout.responsive";
+@import "layout/layout.state";
+
+// Component
+//---------------------------------------------------------
+// Single UI-parts like: typography, button,
+// list, link, image, icons, table and form elements
+@import "component/component.link";
+@import "component/component.icon";
+@import "component/component.list";
+@import "component/component.typography";
+@import "component/component.button";
+@import "component/component.image";
+
+// Modules
+//---------------------------------------------------------
+// Complex UI-parts made of multiple components
+// like: navigation, header, hero, accordion, slider,
+// pagination, gallery etc.
+@import "module/module.section";
+@import "module/module.slider";

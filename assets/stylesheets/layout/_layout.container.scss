@@ -1,0 +1,32 @@
+//---------------------------------------------------------
+//  #Container
+//---------------------------------------------------------
+
+@mixin container {
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin container-inset--s {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+@mixin container-inset--xs {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.container {
+  @include container;
+}
+
+.container-inset--s {
+  @include container-inset--s;
+}
+
+.container-inset--xs {
+  @include container-inset--xs;
+}

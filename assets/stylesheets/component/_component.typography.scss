@@ -1,0 +1,189 @@
+//---------------------------------------------------------
+// #Typography 
+//---------------------------------------------------------
+
+// Index
+// - Typography Settings
+// - Typography Base
+
+
+//---------------------------------------------------------
+// #Typography Settings
+//---------------------------------------------------------
+
+@mixin text-xxl {
+  @include flex-font-size(30px, 1.3);
+
+  @media screen and (max-height: 510px) {
+    @include flex-font-size(26px, 1.3);
+  }
+}
+
+@mixin text-xl {
+  @include flex-font-size(26px, 1.3);
+
+  @media screen and (max-height: 510px) {
+    @include flex-font-size(24px, 1.3);
+  }
+}
+
+@mixin text-l {
+  @include flex-font-size(20px, 1.4);
+
+  @media screen and (max-height: 510px) {
+    @include flex-font-size(18px, 1.4);
+  }
+}
+
+@mixin text-m {
+  @include flex-font-size(18px, 1.4);
+}
+
+@mixin text-s {
+  @include flex-font-size(14px, 1.4);
+}
+
+@mixin text-shadow-m {
+  text-shadow: 0px 2px 4px rgba(color(black), 0.5);
+}
+
+//---------------------------------------------------------
+// Typography Styles
+//---------------------------------------------------------
+
+html {
+  font-size: ($flex-base-font-size / 16px) * 1em; /* [1] */
+  line-height: $flex-base-line-height / $flex-base-font-size; /* [1] */
+  background-color: $flex-base-background-color;
+  color: $flex-base-text-color;
+  font-family: $font-stack;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLegibility;
+  font-weight: normal;
+}
+
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+hr {
+  margin: 3em 0;
+  padding: 0;
+  border: none;
+  border-top: 1px solid #ddd;
+  color: #eee;
+  text-align: center;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted $flex-base-text-color;
+}
+
+pre {
+  display: block;
+  padding: 15px;
+  font-size: .9em;
+  white-space: pre-line;
+  line-height: 1.6;
+  font-family: arial, sans-serif;
+  color: #fff;
+  background: $flex-base-text-color;
+}
+
+blockquote {
+  position: relative;
+  quotes: "“" "”" "‘" "’";
+}
+
+cite {
+  display: inline-block;
+}
+
+// size
+
+.text--xxl {
+  @include text-xxl;
+}
+
+.text--xl {
+  @include text-xl;
+}
+
+.text--l {
+  @include text-l;
+}
+
+.text--m {
+  @include text-m;
+}
+
+.text--s {
+  @include text-s;
+}
+
+// appearance
+
+.text--strong {
+  font-weight: bold;
+}
+
+.text--emph {
+  font-style: italic;
+}
+
+// colors
+
+.text--body {
+  color: color(white);
+}
+
+.text--soft {
+  color: color(greenLight);
+}
+
+// shadow
+
+.text--shadow-m {
+  @include text-shadow-m;
+}
+
+// combinations
+
+.text--xxl--strong--shadow-m {
+  @extend .text--xxl;
+  @extend .text--strong;
+  @extend .text--shadow-m;
+}
+
+.text--xl--strong--shadow-m {
+  @extend .text--xl;
+  @extend .text--strong;
+  @extend .text--shadow-m;
+}
+
+.text--xl--soft--strong--shadow-m {
+  @extend .text--xxl;
+  @extend .text--soft;
+  @extend .text--strong;
+  @extend .text--shadow-m;
+}
+
+.text--l--shadow-m {
+  @extend .text--l;
+  @extend .text--shadow-m;
+}
+
+.text--m--strong--shadow-m {
+  @extend .text--m;
+  @extend .text--strong;
+  @extend .text--shadow-m;
+}
+
+.text--s--shadow-m {
+  @extend .text--s;
+  @extend .text--shadow-m;
+}

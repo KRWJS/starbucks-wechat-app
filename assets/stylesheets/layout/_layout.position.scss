@@ -1,0 +1,87 @@
+//---------------------------------------------------------
+//  #Position
+//---------------------------------------------------------
+
+// Position text and objects
+
+.group {
+    @include group;
+}
+
+.l-align-center {
+	text-align: center !important;
+}
+
+.l-align-right {
+	text-align: right !important;
+}
+
+.l-align-left {
+	text-align: left !important;
+}
+
+.l-rel {
+	position: relative;
+}
+
+.l-left {
+	float: left !important;
+}
+
+.l-right {
+	float: right !important;
+}
+
+.l-center {
+	position: absolute;
+	left: 50%;
+	@include transform(translateX(-50%));
+}
+
+.l-middle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	@include transform(translate(-50%, -50%));
+}
+
+.l-center-block {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.is-hidden {
+	display: none;
+}
+
+.is-visually-hidden {
+	position: absolute;
+	top: -5000px;
+	left: -5000px;
+}
+
+.l-v-center-table {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+
+.l-v-center-cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.l-full-height {
+	height: 100%;
+}
+
+.l-v-align-middle {
+  vertical-align: middle;
+}
+
+.l-center-block-m {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}

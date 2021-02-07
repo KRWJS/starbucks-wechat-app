@@ -1,0 +1,235 @@
+//---------------------------------------------------------
+//  #Mixins
+//---------------------------------------------------------
+
+// Index
+// - Mediaqueries Calculate
+// - Width Class output
+// - Rem font-size
+// - Truncate fade text
+// - Prefix animations
+// - Prefix Animation Keyframes
+// - Prefix opacity
+// - Prefix transforms
+// - Polyfills
+// - Prefix unselectable
+
+
+//---------------------------------------------------------
+//  #Import Depencies
+//---------------------------------------------------------
+
+
+//---------------------------------------------------------
+//  #Mediaquery mixin
+//---------------------------------------------------------
+
+// A simple mixin to quickly generate whole media queries from the aliases and
+// conditions defined in `_settings.responsive.scss`.
+//
+// Usage:
+//
+// .foo {
+//     color: green;
+//
+//     @include media-query(palm) {
+//         color: red;
+//     }
+//
+// }
+
+@mixin media-query($mq) {
+
+    $breakpoint-found: false;
+
+    // Loop through the list of breakpoints we’ve provided in our settings file.
+    @each $breakpoint in $breakpoints {
+
+        // Grab the alias and the condition from their respective locations in
+        // the list.
+        $alias:     nth($breakpoint, 1);
+        $condition: nth($breakpoint, 2);
+
+        // If the media query we’ve specified has an alias and a condition...
+        @if $mq == $alias and $condition {
+
+            // ...tell the mixin that we’ve found it...
+            $breakpoint-found: true;
+
+            // ...and spit it out here.
+            @media #{$condition} {
+                @content;
+            }
+
+        }
+
+    }
+
+    // If the user specifies a non-exitent alias, send them a warning.
+    @if $breakpoint-found == false{
+        @warn "Oops! Breakpoint ‘#{$mq}’ does not exist."
+    }
+
+}
+
+
+
+//---------------------------------------------------------
+//  Rem font-size
+//---------------------------------------------------------
+
+// Create a fully formed type style (sizing and vertical rhythm) by passing in a
+// single value, e.g.:
+//
+// .foo {
+//     @include flex-font-size(12px);
+// }
+//
+// This will generate a rem-based font-size with its pixel fallback, as well as
+// a unitless line-height which will place the element on your baseline, e.g.:
+//
+// .foo {
+//     font-size: 12px;
+//     font-size: 0.75rem;
+//     line-height: 2;
+// }
+//
+// If you do not want flexcss to generate you a line-height automatically, you
+// simply pass in your own as a second paramater:
+//
+// .foo {
+//     @include flex-font-size(12px, 1.5);
+// }
+//
+// This will yield:
+//
+// .foo {
+//     font-size: 12px;
+//     font-size: 0.75rem;
+//     line-height: 1.5;
+// }
+//
+// This parameter can be any integer, ‘inherit’, or ‘normal’. If you don’t want
+// a line-height at all, pass in a second paramater of ‘none’ or ‘false’:
+//
+// .foo {
+//     @include flex-font-size(12px, none);
+// }
+//
+// This will yield:
+//
+// .foo {
+//     font-size: 12px;
+//     font-size: 0.75rem;
+// }
+
+@mixin flex-font-size($flex-font-size, $flex-line-height: auto) {
+    font-size: $flex-font-size;
+    font-size: ($flex-font-size / $flex-base-font-size) * 1rem;
+
+    @if $flex-line-height == auto {
+        line-height: ceil($flex-font-size / $flex-base-line-height) * ($flex-base-line-height / $flex-font-size);
+    }
+
+    @else {
+
+        @if (type-of($flex-line-height) == number or $flex-line-height == inherit or $flex-line-height == normal) {
+            line-height: $flex-line-height;
+        }
+
+        @elseif ($flex-line-height != none and $flex-line-height != false) {
+            @warn "D’oh! ‘#{$flex-line-height}’ is not a valid value for `line-height`."
+        }
+
+    }
+
+}
+
+//---------------------------------------------------------
+//  Prefix Opacity
+//---------------------------------------------------------
+@mixin opacity($transparancy) {
+  	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$transparancy * 100})";
+  	-moz-opacity: $transparancy;
+  	-khtml-opacity: $transparancy;
+  opacity: $transparancy;
+}
+
+
+//---------------------------------------------------------
+//  Prefix Animations
+//---------------------------------------------------------
+@mixin animation($animations) {
+	 -webkit-animation: $animations; /* Chr, Saf */
+	          animation: $animations; /* IE >9, Fx >15, Op >12.0 */
+}
+
+//---------------------------------------------------------
+//  Prefix Animation Keyframes
+//---------------------------------------------------------
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+//---------------------------------------------------------
+//  Prefix Transforms
+//---------------------------------------------------------
+@mixin transform($transforms) {
+  -webkit-transform: $transforms; /* Ch <36, Saf 5.1+, iOS, An =<4.4.4 */
+      -ms-transform: $transforms; /* IE 9 */
+          transform: $transforms; /* IE 10, Fx 16+, Op 12.1+ */
+}
+
+//---------------------------------------------------------
+//  Prefix Transitions
+//---------------------------------------------------------
+@mixin transition($transition...) {
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  -webkit-transition: $transition;
+  transition:         $transition;
+}
+
+
+//---------------------------------------------------------
+//  Hardware accel
+//---------------------------------------------------------
+@mixin hardware-accel {
+	@include transform( translateZ(0) ); // hardware accelerate -webkit-
+	backface-visibility: hidden; // hardware accelerate -webkit-
+}
+
+//---------------------------------------------------------
+//  Prefix unselectable
+//---------------------------------------------------------
+@mixin select($param) {
+  -webkit-touch-callout: $param;
+  -webkit-user-select: $param;
+  -moz-user-select: $param;
+  -ms-user-select: $param;
+  -o-user-select: $param;
+  -khtml-user-select: $param;
+  user-select: $param;
+}
+
+//---------------------------------------------------------
+//  Group
+//---------------------------------------------------------
+@mixin group {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

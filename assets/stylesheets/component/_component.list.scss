@@ -1,0 +1,36 @@
+//---------------------------------------------------------
+// #List
+//---------------------------------------------------------
+
+// Index
+// - List base
+// - List bare
+
+
+//---------------------------------------------------------
+// #List Base
+//---------------------------------------------------------
+li {
+
+    > ul,
+    > ol {
+        margin-bottom: 0; /* Remove extra vertical spacing when nesting lists. */
+    }
+
+}
+
+
+//---------------------------------------------------------
+// List Bare
+//---------------------------------------------------------
+// List-bare removes any indents and bullet points from lists.
+
+@mixin list-bare {
+	margin:  0;
+    padding: 0;
+    list-style: none;
+}
+
+.list-bare {
+	@include list-bare;
+}

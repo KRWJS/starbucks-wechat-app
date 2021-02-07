@@ -1,0 +1,68 @@
+//---------------------------------------------------------
+// RESET
+//---------------------------------------------------------
+
+// based on http://jaydenseric.com/blog/forget-normalize-or-resets-lay-your-own-css-foundation
+
+
+// 1. Set default font family to sans-serif.
+// 2. Prevent iOS text size adjust after orientation change, without disabling
+//    user zoom.
+// 3. Force scrollbars to always be visible to prevent awkward ‘jumps’ when
+//    navigating between pages that do/do not have enough content to produce
+//    scrollbars naturally.
+// 4. Ensure the page always fills at least the entire height of the viewport.
+// 5. Fonts on OSX will look more consistent with other systems that do not
+//    render text using sub-pixel anti-aliasing.
+html {
+	font-family: sans-serif; /* 1 */
+	-ms-text-size-adjust: 100%; /* 2 */
+	-webkit-text-size-adjust: 100%; /* 2 */
+	overflow-y: visible; /* [3] */
+    height: 100%;
+    min-height: 100%; /* [4] */
+    -moz-osx-font-smoothing: grayscale; /* [5] */
+    -webkit-font-smoothing: antialiased; /* [5] */
+}
+
+* {
+  	-webkit-box-sizing: border-box; /* Safari 3.0 - 5.0, Chrome 1 - 9, Android 2.1 - 3.x */
+  	-moz-box-sizing: border-box;    /* Firefox 1 - 28 */
+  box-sizing: border-box;         	/* Safari 5.1+, Chrome 10+, Firefox 29+, Opera 7+, IE 8+, Android 4.0+, iOS any */
+}
+
+
+body {
+	margin: 0;
+	height: 100%; /* 4 */
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+blockquote,
+figure{
+	margin: 0;
+}
+
+a {
+  background-color: transparent;
+}
+
+textarea {
+	overflow: auto; /* Remove default vertical scrollbar in IE 8/9/10/11. */
+	-webkit-appearance: none; /* Remove -webkit default styling  */
+}
+
+button,
+input[type="submit"] {
+	border: 0;
+	-webkit-appearance: none; /* Remove -webkit default styling  */
+}

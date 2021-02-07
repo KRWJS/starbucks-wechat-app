@@ -1,0 +1,72 @@
+//---------------------------------------------------------
+// #Button
+//---------------------------------------------------------
+
+// Index
+// - Button setting
+// - Button
+
+
+//---------------------------------------------------------
+// #Button Setting
+//---------------------------------------------------------
+// 1. Allow us to style box model properties.
+// 2. Line different sized buttons up a little nicer.
+// 3. Make buttons inherit font styles (often necessary when styling `input`s as
+//    buttons).
+// 4. Reset/normalize some styles.
+// 5. Force all button-styled elements to appear clickable.
+// 6. Fixes odd inner spacing in IE7.
+// 7. Subtract the border size from the padding value so that buttons do not
+//    grow larger as we add borders.
+// 8.  Fix a Firefox bug whereby `input type="submit"` gains 2px extra padding.
+
+
+@mixin btn {
+  display: inline-block; /* [1] */
+  vertical-align: middle; /* [2] */
+  font: inherit; /* [3] */
+  text-align: center; /* [4] */
+  margin:  0; /* [4] */
+  cursor: pointer; /* [5] */
+  overflow: visible; /* [6] */
+  @include select(none);
+  @include transition(all .3s);
+  font-weight: bold;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none; /* [4] */
+  }
+
+  &::-moz-focus-inner,
+  &::-moz-focus-inner {
+    border:  0; /* [8] */
+    padding: 0; /* [8] */
+  }
+}
+
+
+//---------------------------------------------------------
+// #Button
+//---------------------------------------------------------
+
+.btn {
+  @include btn;
+}
+
+.btn--base {
+  @include flex-font-size(20px, 1.2);
+  color: color(white);
+  font-weight: bold;
+  padding: 10px 30px;
+  background-color: rgba(color(black), .2);
+  border: 4px solid rgba(color(white), 1);
+  @include text-shadow-m;
+
+  .no-touchevents &:hover, .no-touchevents &:active {
+
+  }
+}

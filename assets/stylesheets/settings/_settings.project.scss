@@ -1,0 +1,52 @@
+//---------------------------------------------------------
+// #Project Settings
+//---------------------------------------------------------
+
+// Project Custom Settings
+
+//---------------------------------------------------------
+// Typography & color
+//---------------------------------------------------------
+// Default 'font-size' and 'line-height' for the entire project,
+// The `font-size` is calculated to exist in ems, the `line-height`
+// is calculated to exist unitlessly.
+$flex-base-text-color:		   #fff !default;
+$flex-base-background-color:   #000 !default;
+$flex-base-font-size:		   16px !default;
+$flex-base-line-height:		   24px !default;
+
+$font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
+//---------------------------------------------------------
+// Colors
+//---------------------------------------------------------
+$colors: (
+  white:            #ffffff,
+  greyDark:         #292929,
+  greenLight:       #79a54c,
+  black:            #000000
+);
+
+//---------------------------------------------------------
+// Breakpoints
+//---------------------------------------------------------
+// set 'Name' and 'Value' to use media-querie mixin
+//
+// Example:
+// input: @include media-query('name')
+// output:
+
+$breakpoints: (
+  "tablet-landscape"	"screen and (max-width: 1023px)",
+  "tablet"	"screen and (max-width: 770px)",
+  "phablet"	"screen and (max-width: 550px)",
+  "phone-large"	"screen and (max-width: 500px)",
+  "phone"		"screen and (max-width: 400px)"
+);
+
+//---------------------------------------------------------
+// Paths
+//---------------------------------------------------------
+
+$images-base-path: "/images/";
+$fonts-base-path: "/fonts/";
